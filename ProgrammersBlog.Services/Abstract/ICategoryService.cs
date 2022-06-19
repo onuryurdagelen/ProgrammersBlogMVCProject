@@ -13,11 +13,13 @@ namespace ProgrammersBlog.Services.Abstract
     {
         Task<IDataResult<Category>> Get(int categoryId);
         Task<IDataResult<List<Category>>> GetAll();
+        Task<IDataResult<List<Category>>> GetAllByNonDeleted();
+
 
         Task<IResult> AddAsync(CategoryAddDto categoryAddDto,string createdByName);
         Task<IResult> UpdateAsync(CategoryUpdateDto categoryUpdateDto,string modifiedByName);
 
-        Task<IResult> Delete(int categoryId); //GetAll yaptigimizda sadece ilgili veri gozukmez.
+        Task<IResult> Delete(int categoryId,string modifiedByName); //GetAll yaptigimizda sadece ilgili veri gozukmez.
         Task<IResult> HardDelete(int categoryId); //Veritabanin silmek icin kullanilir.
     }
 }

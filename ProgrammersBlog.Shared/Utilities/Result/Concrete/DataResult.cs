@@ -12,7 +12,7 @@ namespace ProgrammersBlog.Shared.Utilities.Result.Concrete
         {
             Data = data;
         }
-        public DataResult(T data,ResultStatus resultStatus,string message) : base(resultStatus,message)
+        public DataResult(ResultStatus resultStatus,string message,T data) : base(resultStatus,message)
         {
             Data = data;
         }
