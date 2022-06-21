@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>@ViewBag.Title - Admin Paneli | Programmers Blog</title>
-        @await Html.PartialAsync("_LayoutCssPartial");
+        @await Html.PartialAsync("_LayoutCssPartial")
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -35,17 +35,17 @@
             </ul>
         </nav>
         <div id="layoutSidenav">
-            @await Html.PartialAsync("_LayoutSideBarNavPartial");
+            @await Html.PartialAsync("_LayoutSideBarNavPartial")
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        @RenderBody();
+                        @RenderBody()
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted"><Tüm Hakları Saklıdır &copy; Programmers Blog 2020</div>
+                            <div class="text-muted">Tüm Hakları Saklıdır &copy; Programmers Blog 2020</div>
                             <div>
                                 <a href="#">Gizlilik Politikası</a>
                                 &middot;
@@ -56,8 +56,8 @@
             </div>
         </div>
         
-        @await Html.PartialAsync("_LayoutJsPartial");
-        @await RenderSectionAsync("Scripts",false);
+        @await Html.PartialAsync("_LayoutJsPartial")
+        @await RenderSectionAsync("Scripts",false)
         @*Sayfalarda Js dosyaları calıstırmak için kullanıır.False olduğunda her sayfada o js dosyası çalışmaz.*@
     </body>
 </html>

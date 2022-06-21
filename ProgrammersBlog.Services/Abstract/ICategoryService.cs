@@ -17,8 +17,8 @@ namespace ProgrammersBlog.Services.Abstract
         Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActive();
 
 
-        Task<IResult> AddAsync(CategoryAddDto categoryAddDto,string createdByName);
-        Task<IResult> UpdateAsync(CategoryUpdateDto categoryUpdateDto,string modifiedByName);
+        Task<IDataResult<CategoryDto>> AddAsync(CategoryAddDto categoryAddDto,string createdByName);
+        Task<IDataResult<CategoryDto>> UpdateAsync(CategoryUpdateDto categoryUpdateDto,string modifiedByName);
 
         Task<IResult> Delete(int categoryId,string modifiedByName); //GetAll yaptigimizda sadece ilgili veri gozukmez.
         Task<IResult> HardDelete(int categoryId); //Veritabanin silmek icin kullanilir.
