@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,8 +41,24 @@ namespace ProgrammersBlog.Mvc
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile));
+            services.AddSession(); //Session yapýsýný kullanmak için yapýlýr.
             services.AddRazorPages();
             services.LoadMyService(); //Service katmanýndaki Extension bölümünde ServiceCollectionExtensions class'ýnda alýrýz.
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = new PathString("/Admin/User/Login"); //Login olan kullanýcýyý yönlendirmek için kullanýlýr.
+                options.LogoutPath = new PathString("/Admin/User/Logout"); //Logout olan kullanýcýlarý yönlendirmek için kullanýlýr.
+                options.Cookie = new CookieBuilder
+                {
+                    Name = "ProgrammersBlog",
+                    HttpOnly = true, //Sadece server-side tarafýnda çalýþmayý saðlar.Client-side'ta gözükmez.Güvenlik için önemlidir.
+                    SameSite = SameSiteMode.Strict, //Cookie bilgilerinin sadece kendi sitemizden geldiðinde kabul edilir.
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest //CookieSecurePolicy.Always doðru olandýr.
+                };
+                options.SlidingExpiration = true; //Kullanýcý siteye girdiðinde süre tanýr.
+                options.ExpireTimeSpan = TimeSpan.FromDays(7); //7 gün boyunca bir daha giriþ yapmasý gerekmeyecek.Tarayýcý üzerinde cookie var olacak.
+                options.AccessDeniedPath = new PathString("/Admin/User/AccessDenied"); //Kullanýcý giriþ yaptýðýnda yetkisi olmayan yere giriþ yaptýðýnda yönlendirilecek Path'tir.
+            });
 
 
 
@@ -59,11 +76,11 @@ namespace ProgrammersBlog.Mvc
                 app.UseExceptionHandler("/Error");
             }
 
+            app.UseSession();
             app.UseStaticFiles();
-
             app.UseRouting();
-            app.UseStaticFiles();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

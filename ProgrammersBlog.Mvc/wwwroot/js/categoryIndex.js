@@ -1,71 +1,4 @@
-﻿//Silinmemiş olan tüm kategorileri getiren fonksiyondur.
-
-//        function LoadAllCategoriesByNonDeleted() {
-//            const url = '@Url.Action("GetAllByNonDeleted","Category")';
-//            console.log(url);
-//            $.ajax({
-//                type: 'GET',
-//                url: url,
-//                contentType: "application/json",
-//                //İsteği atmadan önce kullanılır.Spinner kullanılır ve tablo temizlenir.
-//                beforeSend: function () {
-//                    $("#categoriesTable").hide(); //Yenile butonua bastığımızda tabloyu gizleriz.
-//                    console.log("BEFORE-SEND")
-//                    $(".spinner-border").show(); //İstek atıldığında spinner görünür hale gelir.
-//                },
-//                success: function (data) {
-//                    console.log("SUCCESS")
-//                    const categoryListDto = jQuery.parseJSON(data);
-//                    console.log(categoryListDto);
-//                    var data = categoryListDto.Categories.$values;
-//                    //console.log("JSON DATA" + data);
-//                    if (categoryListDto.ResultStatus === 0) {
-//                        let tableBody = "";
-//                        $.each(data,
-//                            function (index, category) {
-//                                tableBody +=
-//                                    `
-//                                             <tr data-id='${category.Id}'>
-//                                                             <td>${category.Id}</td>
-//                                                             <td>${category.Name}</td>
-//                                                             <td>${category.Description}</td>
-//                                                             <td>${convertFirstLetterToUpperCase(category.IsActive.toString())}</td>
-//                                                             <td>${convertFirstLetterToUpperCase(category.IsDeleted.toString())}</td>
-//                                                             <td>${category.Note}</td>
-//                                                             <td>${converToShortDate(category.CreatedDate)}</td>
-//                                                             <td>${category.CreateByName}</td>
-//                                                             <td>${converToShortDate(category.ModifiedDate)}</td>
-//                                                             <td>${category.ModifiedByName}</td>
-//                                                             <td>
-//                                                                 <button class="btn btn-warning btn-sm btn-edit" data-id="${category.Id}"><span class="fas fa-edit"></span> Düzenle</button>
-//                                                                 <button class="btn btn-danger btn-sm btn-delete" data-id="${category.Id}"><span class="fas fa-minus-circle"></span> Sil</button>
-//                                                             </td>
-//                                                         </tr>
-//                                            `;
-//                            });
-//                        $("#categoriesTable > tbody").replaceWith(tableBody);
-//                        $(".spinner-border").hide(); //İstek atıldığında spinner görünmez hale gelir.
-//                        $("#categoriesTable").fadeIn(1400); //Verileri getirme başarılı oldugunda tabloyu gösteririz.
-//                        //console.log($("#categoriesTable tbody")[0])
-
-//                    }
-//                    else {
-//                        //console.log(categoryListDto);
-//                        //toastr.error(`${categoryListDto.Message}`, 'İşlem Başarısız!')
-
-//                    }
-
-//                    //console.log("DATA: "+data);
-//                },
-//                error: function (error) {
-//                    console.log(error);
-//                    //console.log(categoryListDto);
-//                    console.log("HATA OLUŞTU!");
-//                    toastr.error(`${error.statusText}`, 'İşlem Başarısız!')
-//                }
-//            })
-//}
-
+﻿
 //Tüm kategorileri getiren fonksiyondur.
 function LoadAllCategories() {
     const url = '/Admin/Category/GetAllCategories/'; //Area/Controller/ActionName/
@@ -447,20 +380,6 @@ $(document).ready(function () {
                 const dataToSend = form.serialize(); //form'u serialize yani donusturmus olduk.
 
 
-                // $.ajax({
-                //url: url,
-                //    type: 'POST',
-                //    dataType: 'json',
-                //    data: dataToSend,
-                //    success: function (gelenveri) {
-                //        console.log(gelenveri);
-                //    },
-                //    error: function (hata) {
-                //        console.log(hata);
-
-                //    }
-                //});
-
                 $.post(url, dataToSend).done(function (data) {
                     console.log(data);
                     const categoryAddAjaxModel = jQuery.parseJSON(data); //data objesını JSON'a parse ederiz.
@@ -608,7 +527,6 @@ $(document).ready(function () {
                 error: function (error) {
                     console.log()
                     console.log("HATA!!!")
-                    console.log(error);
                     toastr.error("Bir Hata Oluştu!!");
                 }
             });

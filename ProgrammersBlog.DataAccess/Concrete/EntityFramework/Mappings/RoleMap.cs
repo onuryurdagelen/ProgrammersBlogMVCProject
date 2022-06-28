@@ -11,35 +11,31 @@ namespace ProgrammersBlog.DataAccess.Concrete.EntityFramework.Mappings
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
+            // Primary key
             builder.HasKey(r => r.Id);
-            builder.Property(r => r.Id).ValueGeneratedOnAdd();
-            builder.Property(r => r.Name).IsRequired();
-            builder.Property(r => r.Name).HasMaxLength(30);
-            builder.Property(r => r.Description).IsRequired();
-            builder.Property(r => r.Description).HasMaxLength(250);
-            builder.Property(r => r.CreateByName).IsRequired();
-            builder.Property(r => r.CreateByName).HasMaxLength(50);
-            builder.Property(r => r.ModifiedByName).IsRequired();
-            builder.Property(r => r.ModifiedByName).HasMaxLength(50);
-            builder.Property(r => r.CreatedDate).IsRequired();
-            builder.Property(r => r.IsDeleted).IsRequired();
-            builder.Property(r => r.IsActive).IsRequired();
-            builder.Property(r => r.Note).HasMaxLength(500);
 
-            builder.ToTable("Roles");
+            // Index for "normalized" role name to allow efficient lookups
+            builder.HasIndex(r => r.NormalizedName).HasDatabaseName("RoleNameIndex").IsUnique();
 
-            builder.HasData(new Role
-            {
-                Id = 1,
-                Name = "Adming",
-                Description = "Admin rolu tum haklara sahiptir.",
-                IsActive = true,
-                IsDeleted = false,
-                CreateByName = "InitialCreate",
-                CreatedDate = DateTime.Now,
-                ModifiedByName = "InitialCreate",
-                Note = "Admin Roludur"
-            });
+            // Maps to the AspNetRoles table
+            builder.ToTable("ProgrammersBlogRoles");
+
+            // A concurrency token for use with the optimistic concurrency checking
+            builder.Property(r => r.ConcurrencyStamp).IsConcurrencyToken(); 
+            //Aynı anda birden fazla admin kullanıcı hakkında değişiklik yaptığında 1.admin değişiklikliği gerçekleştirdiğinde 2.admin değişiklik yaparken exception fırlatır.
+
+            // Limit the size of columns to use efficient database types
+            builder.Property(u => u.Name).HasMaxLength(100);
+            builder.Property(u => u.NormalizedName).HasMaxLength(100); //Büyük harflere çevrildiği ve indekslendiği veridir.
+
+            // The relationships between Role and other entity types
+            // Note that these relationships are configured with no navigation properties
+
+            // Each Role can have many entries in the UserRole join table
+            builder.HasMany<UserRole>().WithOne().HasForeignKey(ur => ur.RoleId).IsRequired();
+
+            // Each Role can have many associated RoleClaims
+            builder.HasMany<RoleClaim>().WithOne().HasForeignKey(rc => rc.RoleId).IsRequired();
 
         }
     }

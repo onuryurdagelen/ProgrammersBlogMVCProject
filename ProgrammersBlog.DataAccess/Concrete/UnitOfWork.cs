@@ -13,8 +13,6 @@ namespace ProgrammersBlog.DataAccess.Concrete
         private ProgrammersBlogContext _context;
         private EfArticleRepository _articleRepository;
         private EfCommentRepository _commentRepository;
-        private EfRoleRepository _roleRepository;
-        private EfUserRepository _userRepository;
         private EfCategoryRepository _categoryRepository;
 
         public UnitOfWork(ProgrammersBlogContext context)
@@ -28,9 +26,7 @@ namespace ProgrammersBlog.DataAccess.Concrete
 
         public ICommentRepository Comments => _commentRepository ?? new EfCommentRepository(_context);
 
-        public IRoleRepository Roles  => _roleRepository ?? new EfRoleRepository(_context);
-
-        public IUserRepository Users => _userRepository ?? new EfUserRepository(_context);
+   
 
         //
         public async ValueTask DisposeAsync()
