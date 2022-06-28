@@ -9,7 +9,7 @@ namespace ProgrammersBlog.Entities.Dtos
     public class CategoryAddDto
     {
         [DisplayName("Kategori Adı")]
-        [Required(ErrorMessage = "{0} Adı Boş geçilmemelidir!")]
+        [Required(ErrorMessage = "{0} Boş geçilmemelidir!")]
         [MaxLength(70,ErrorMessage = "{0} {1} karakterden büyük olmamalıdır!")]
         [MinLength(3,ErrorMessage = "{0} {1} karakterden az olmamalıdır!")]
         public string Name { get; set; }

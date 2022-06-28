@@ -12,6 +12,7 @@ namespace ProgrammersBlog.Services.Abstract
     public interface ICategoryService
     {
         Task<IDataResult<CategoryDto>> Get(int categoryId);
+        Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDto(int categoryId);
         Task<IDataResult<CategoryListDto>> GetAll();
         Task<IDataResult<CategoryListDto>> GetAllByNonDeleted();
         Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActive();
@@ -20,7 +21,7 @@ namespace ProgrammersBlog.Services.Abstract
         Task<IDataResult<CategoryDto>> AddAsync(CategoryAddDto categoryAddDto,string createdByName);
         Task<IDataResult<CategoryDto>> UpdateAsync(CategoryUpdateDto categoryUpdateDto,string modifiedByName);
 
-        Task<IResult> Delete(int categoryId,string modifiedByName); //GetAll yaptigimizda sadece ilgili veri gozukmez.
-        Task<IResult> HardDelete(int categoryId); //Veritabanin silmek icin kullanilir.
+        Task<IDataResult<CategoryDto>> Delete(int categoryId,string modifiedByName); //GetAll yaptigimizda sadece ilgili veri gozukmez.
+        Task<IDataResult<CategoryDto>> HardDelete(int categoryId); //Veritabanin silmek icin kullanilir.
     }
 }
