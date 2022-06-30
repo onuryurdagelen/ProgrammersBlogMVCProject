@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using ProgrammersBlog.DataAccess.Abstract;
 using ProgrammersBlog.DataAccess.Concrete;
 using ProgrammersBlog.DataAccess.EntityFramework.Contexts;
