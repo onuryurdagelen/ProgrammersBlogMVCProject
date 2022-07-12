@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProgrammersBlog.DataAccess.Abstract;
 using ProgrammersBlog.DataAccess.Concrete;
@@ -29,7 +30,7 @@ namespace ProgrammersBlog.Services.Extensions
 
                 //User Username and Email Options
                 options.User.RequireUniqueEmail = true;
-                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+$";
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -._@+$";
             })
                 .AddEntityFrameworkStores<ProgrammersBlogContext>();
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();

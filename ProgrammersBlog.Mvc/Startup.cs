@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProgrammersBlog.DataAccess.EntityFramework.Contexts;
 using ProgrammersBlog.Mvc.AutoMapper.Profiles;
 using ProgrammersBlog.Services.AutoMapper.Profiles;
 using ProgrammersBlog.Services.Extensions;
@@ -29,6 +31,8 @@ namespace ProgrammersBlog.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.LoadMyService(); //Service katmanýndaki Extension bölümünde ServiceCollectionExtensions class'ýnda alýrýz.
             services.AddControllersWithViews().AddRazorRuntimeCompilation()
                 .AddJsonOptions(opt =>
             {
@@ -44,7 +48,7 @@ namespace ProgrammersBlog.Mvc
             services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile),typeof(UserProfile));
             services.AddSession(); //Session yapýsýný kullanmak için yapýlýr.
             services.AddRazorPages();
-            services.LoadMyService(); //Service katmanýndaki Extension bölümünde ServiceCollectionExtensions class'ýnda alýrýz.
+            
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = new PathString("/Admin/User/Login"); //Login olan kullanýcýyý yönlendirmek için kullanýlýr.

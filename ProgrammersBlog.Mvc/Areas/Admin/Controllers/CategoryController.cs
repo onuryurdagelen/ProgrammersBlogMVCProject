@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProgrammersBlog.Entities.Dtos;
 using ProgrammersBlog.Mvc.Models;
 using ProgrammersBlog.Services.Abstract;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,editor")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
@@ -122,7 +124,7 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
             });
             return Json(categoryUpdateAjaxErrorModel);
         }
-
+      
 
     }
 }
