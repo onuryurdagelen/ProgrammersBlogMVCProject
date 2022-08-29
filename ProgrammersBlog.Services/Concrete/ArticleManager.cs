@@ -58,14 +58,14 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<ArticleDto>(ResultStatus.Error, "Böyle bir makale bulunamadı", null);
+            return new DataResult<ArticleDto>(ResultStatus.ClientError, "Böyle bir makale bulunamadı", null);
         }
 
         public async Task<IDataResult<ArticleListDto>> GetAll()
         {
             var articles = await _unitOfWork.Articles.GetAllAsync(null, a => a.User,a => a.Category);
 
-            if (articles.Count > -1)
+            if (articles.Count > 0)
             {
                 return new DataResult<ArticleListDto>(ResultStatus.Success, new ArticleListDto
                 {
@@ -73,7 +73,7 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<ArticleListDto>(ResultStatus.Error, "Makaleler bulunamadı", null);
+            return new DataResult<ArticleListDto>(ResultStatus.ClientError, "Makaleler bulunamadı", null);
         }
 
         public async Task<IDataResult<ArticleListDto>> GetAllByCategory(int categoryId)
@@ -93,16 +93,16 @@ namespace ProgrammersBlog.Services.Concrete
                         ResultStatus = ResultStatus.Success
                     });
                 }
-                return new DataResult<ArticleListDto>(ResultStatus.Error, "Makaleler bulunamadı", null);
+                return new DataResult<ArticleListDto>(ResultStatus.ClientError, "Makaleler bulunamadı", null);
             }
-            return new DataResult<ArticleListDto>(ResultStatus.Error,"Böyle bir kategori bulunamadı.", null);
+            return new DataResult<ArticleListDto>(ResultStatus.ClientError, "Böyle bir kategori bulunamadı.", null);
 
         }
 
         public async Task<IDataResult<ArticleListDto>> GetAllByNonDeleted()
         {
             var articles = await _unitOfWork.Articles.GetAllAsync(a => !a.IsDeleted, a => a.User, a => a.Category);
-            if (articles.Count > -1)
+            if (articles.Count > 0)
             {
                 return new DataResult<ArticleListDto>(ResultStatus.Success, new ArticleListDto
                 {
@@ -116,7 +116,7 @@ namespace ProgrammersBlog.Services.Concrete
         public async Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndActive()
         {
             var articles = await _unitOfWork.Articles.GetAllAsync(a => !a.IsDeleted && a.IsActive, a => a.User, a => a.Category);
-            if (articles.Count > -1)
+            if (articles.Count > 0)
             {
                 return new DataResult<ArticleListDto>(ResultStatus.Success, new ArticleListDto
                 {
@@ -153,7 +153,7 @@ namespace ProgrammersBlog.Services.Concrete
                 await _unitOfWork.Articles.DeleteAsync(article);
                 return new Result(ResultStatus.Success, $"{article.Title} Id'li makale başarıyla veritabanından silinmiştir.");
             }
-            return new DataResult<ArticleListDto>(ResultStatus.Error, "Böyle bir Makale bulunamadı", null);
+            return new DataResult<ArticleListDto>(ResultStatus.ClientError, "Böyle bir Makale bulunamadı", null);
         }
 
         

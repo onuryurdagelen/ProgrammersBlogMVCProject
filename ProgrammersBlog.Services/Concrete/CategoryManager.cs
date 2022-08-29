@@ -88,7 +88,7 @@ namespace ProgrammersBlog.Services.Concrete
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(c => !c.IsDeleted, c => c.Articles);
 
-            if (categories.Count > -1)
+            if (categories.Count > 0)
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
                 {
@@ -115,11 +115,11 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryDto>(ResultStatus.Error, $"{category.Id} numaralı kategori bulunamadı.",new CategoryDto
+            return new DataResult<CategoryDto>(ResultStatus.ClientError, $"{category.Id} numaralı kategori bulunamadı.",new CategoryDto
             {
                 Category =null,
                 Message = $"{category.Id} numaralı kategori bulunamadı.",
-                ResultStatus =ResultStatus.Error
+                ResultStatus =ResultStatus.ClientError
 
             });
         }
@@ -139,11 +139,11 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryDto>(ResultStatus.Error, $"Böyle bir kategori bulunamadı.", new CategoryDto
+            return new DataResult<CategoryDto>(ResultStatus.ClientError, $"Böyle bir kategori bulunamadı.", new CategoryDto
             {
                 Category = null,
                 Message = $"Böyle bir kategori bulunamadı.",
-                ResultStatus = ResultStatus.Error
+                ResultStatus = ResultStatus.ClientError
 
             });
         }
@@ -167,7 +167,7 @@ namespace ProgrammersBlog.Services.Concrete
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(c => !c.IsDeleted && c.IsActive, c => c.Articles);
 
-            if (categories.Count > -1)
+            if (categories.Count > 0)
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
                 {
@@ -175,7 +175,7 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiçbir kategori bulunamadı.", null);
+            return new DataResult<CategoryListDto>(ResultStatus.ClientError, "Hiçbir kategori bulunamadı.", null);
         }
 
         public async Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDto(int categoryId)
@@ -188,7 +188,7 @@ namespace ProgrammersBlog.Services.Concrete
                 var categoryUpdateDto = _mapper.Map<CategoryUpdateDto>(category);
                 return new DataResult<CategoryUpdateDto>(ResultStatus.Success, categoryUpdateDto);
             }
-            return new DataResult<CategoryUpdateDto>(ResultStatus.Error, "Böyle bir kategori bulunamadı.", null);
+            return new DataResult<CategoryUpdateDto>(ResultStatus.ClientError, "Böyle bir kategori bulunamadı.", null);
         }
     }
 }

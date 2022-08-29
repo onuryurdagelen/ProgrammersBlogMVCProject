@@ -172,7 +172,7 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
                         UserUpdateDto = userUpdateDto,
                         UserDto = new UserDto
                         {
-                            ResultStatus = ResultStatus.Error,
+                            ResultStatus = ResultStatus.InternalServerError,
                             Message = $"{updatedUser.UserName} adlı kullanıcı adına sahip kullanıcı silinirken bazı hatalar oluştu\n{errorMessages}"
                         },
                         UserUpdatePartial = await this.RenderViewToStringAsync("_UserUpdatePartial", userUpdateDto),
@@ -190,7 +190,7 @@ namespace ProgrammersBlog.Mvc.Areas.Admin.Controllers
                     UserUpdateDto = userUpdateDto,
                     UserDto = new UserDto
                     {
-                        ResultStatus = ResultStatus.Error,
+                        ResultStatus = ResultStatus.InternalServerError,
                         Message = $"{userUpdateDto.UserName} adlı kullanıcı adına sahip kullanıcı güncellenirken hata meydana geldi"
                     },
                     UserUpdatePartial = await this.RenderViewToStringAsync("_UserUpdatePartial", userUpdateDto),
