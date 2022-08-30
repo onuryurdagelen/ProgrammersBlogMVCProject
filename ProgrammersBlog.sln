@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.2.32526.322
+VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersBlog.Shared", "ProgrammersBlog.Shared\ProgrammersBlog.Shared.csproj", "{5A94A53E-108F-4EB5-9B05-DAC0CF0263CE}"
 EndProject
@@ -13,13 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersBlog.Services", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreMvc", "ProgrammersBlog.Mvc\NetCoreMvc.csproj", "{FBC1CB23-3FEB-4683-A7C6-68CBA4B98713}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammersBlog.API", "ProgrammersBlog.API\ProgrammersBlog.API.csproj", "{7C8EB631-6D23-4531-8AD0-841A02AEC920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersBlog.API", "ProgrammersBlog.API\ProgrammersBlog.API.csproj", "{7C8EB631-6D23-4531-8AD0-841A02AEC920}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProgrammersBlog.Presentations", "ProgrammersBlog.Presentations", "{F54DF0AB-CFC4-45D0-815B-5941184799D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorUI", "BlazorUI\BlazorUI.csproj", "{57A9D2E1-B7AA-43A4-9D21-27EDD3C0D749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorUI", "ProgrammersBlog.Presentations\BlazorUI\BlazorUI.csproj", "{BF578C10-CC7C-45C5-86F8-21705BD985F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{9B5A1DE4-1328-4B48-9037-DC5550D14D1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ProgrammersBlog.Presentations\ConsoleUI\ConsoleUI.csproj", "{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{F5117B52-9ED9-4EA9-9A04-097F634F746A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,22 +53,27 @@ Global
 		{7C8EB631-6D23-4531-8AD0-841A02AEC920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C8EB631-6D23-4531-8AD0-841A02AEC920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C8EB631-6D23-4531-8AD0-841A02AEC920}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57A9D2E1-B7AA-43A4-9D21-27EDD3C0D749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57A9D2E1-B7AA-43A4-9D21-27EDD3C0D749}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57A9D2E1-B7AA-43A4-9D21-27EDD3C0D749}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57A9D2E1-B7AA-43A4-9D21-27EDD3C0D749}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B5A1DE4-1328-4B48-9037-DC5550D14D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B5A1DE4-1328-4B48-9037-DC5550D14D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B5A1DE4-1328-4B48-9037-DC5550D14D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B5A1DE4-1328-4B48-9037-DC5550D14D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF578C10-CC7C-45C5-86F8-21705BD985F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF578C10-CC7C-45C5-86F8-21705BD985F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF578C10-CC7C-45C5-86F8-21705BD985F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF578C10-CC7C-45C5-86F8-21705BD985F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5117B52-9ED9-4EA9-9A04-097F634F746A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5117B52-9ED9-4EA9-9A04-097F634F746A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5117B52-9ED9-4EA9-9A04-097F634F746A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5117B52-9ED9-4EA9-9A04-097F634F746A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FBC1CB23-3FEB-4683-A7C6-68CBA4B98713} = {F54DF0AB-CFC4-45D0-815B-5941184799D8}
-		{57A9D2E1-B7AA-43A4-9D21-27EDD3C0D749} = {F54DF0AB-CFC4-45D0-815B-5941184799D8}
-		{9B5A1DE4-1328-4B48-9037-DC5550D14D1A} = {F54DF0AB-CFC4-45D0-815B-5941184799D8}
+		{BF578C10-CC7C-45C5-86F8-21705BD985F6} = {F54DF0AB-CFC4-45D0-815B-5941184799D8}
+		{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E} = {F54DF0AB-CFC4-45D0-815B-5941184799D8}
+		{F5117B52-9ED9-4EA9-9A04-097F634F746A} = {F54DF0AB-CFC4-45D0-815B-5941184799D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60E7D1B7-D146-43E2-888B-2C6EA8227478}
