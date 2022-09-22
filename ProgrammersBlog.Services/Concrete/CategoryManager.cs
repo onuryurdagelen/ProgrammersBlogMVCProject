@@ -56,10 +56,10 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success,
                 });
             }
-            return new DataResult<CategoryDto>(ResultStatus.Error, "Böyle bır kategori bulunamadı.",new CategoryDto
+            return new DataResult<CategoryDto>(ResultStatus.NotFound, "Böyle bır kategori bulunamadı.",new CategoryDto
             {
                 Category = null,
-                ResultStatus =ResultStatus.Error,
+                ResultStatus =ResultStatus.NotFound,
                 Message = "Böyle bır kategori bulunamadı."
             });
         }
@@ -76,10 +76,10 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiçbir kategori bulunamadı.", new CategoryListDto
+            return new DataResult<CategoryListDto>(ResultStatus.NotFound, "Hiçbir kategori bulunamadı.", new CategoryListDto
             {
                 Categories = null,
-                ResultStatus = ResultStatus.Error,
+                ResultStatus = ResultStatus.NotFound,
                 Message = "Hiçbir kategori bulunamadı."
             });
         }
@@ -96,7 +96,7 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus= ResultStatus.Success
                 });
             }
-                return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiçbir kategori bulunamadı.", null);
+                return new DataResult<CategoryListDto>(ResultStatus.NotFound, "Hiçbir kategori bulunamadı.", null);
         }
         public async Task<IDataResult<CategoryDto>> Delete(int categoryId,string modifiedByName)
         {
@@ -115,11 +115,11 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryDto>(ResultStatus.ClientError, $"{category.Id} numaralı kategori bulunamadı.",new CategoryDto
+            return new DataResult<CategoryDto>(ResultStatus.NotFound, $"{category.Id} numaralı kategori bulunamadı.",new CategoryDto
             {
                 Category =null,
                 Message = $"{category.Id} numaralı kategori bulunamadı.",
-                ResultStatus =ResultStatus.ClientError
+                ResultStatus =ResultStatus.NotFound
 
             });
         }
@@ -139,11 +139,11 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryDto>(ResultStatus.ClientError, $"Böyle bir kategori bulunamadı.", new CategoryDto
+            return new DataResult<CategoryDto>(ResultStatus.NotFound, $"Böyle bir kategori bulunamadı.", new CategoryDto
             {
                 Category = null,
                 Message = $"Böyle bir kategori bulunamadı.",
-                ResultStatus = ResultStatus.ClientError
+                ResultStatus = ResultStatus.NotFound
 
             });
         }
@@ -175,7 +175,7 @@ namespace ProgrammersBlog.Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryListDto>(ResultStatus.ClientError, "Hiçbir kategori bulunamadı.", null);
+            return new DataResult<CategoryListDto>(ResultStatus.NotFound, "Hiçbir kategori bulunamadı.", null);
         }
 
         public async Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDto(int categoryId)
@@ -188,7 +188,7 @@ namespace ProgrammersBlog.Services.Concrete
                 var categoryUpdateDto = _mapper.Map<CategoryUpdateDto>(category);
                 return new DataResult<CategoryUpdateDto>(ResultStatus.Success, categoryUpdateDto);
             }
-            return new DataResult<CategoryUpdateDto>(ResultStatus.ClientError, "Böyle bir kategori bulunamadı.", null);
+            return new DataResult<CategoryUpdateDto>(ResultStatus.NotFound, "Böyle bir kategori bulunamadı.", null);
         }
     }
 }

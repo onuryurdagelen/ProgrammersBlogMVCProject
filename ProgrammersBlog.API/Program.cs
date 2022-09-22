@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProgrammersBlog.DataAccess.EntityFramework.Contexts;
+using ProgrammersBlog.Services.Extensions;
 using ProgrammersBlog.Shared.DependencyResolvers;
 using ProgrammersBlog.Shared.IoC;
 using ProgrammersBlog.Shared.Utilities.Extensions;
@@ -14,15 +15,17 @@ var builder = WebApplication.CreateBuilder(args);
 //    new CoreModule()
 //});
 
-builder.Services.AddDbContext<ProgrammersBlogContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:SqlServer"], sqlOptions =>
-    {
-        {
-            sqlOptions.MigrationsAssembly("ProgrammersBlog.DataAccess");
-        }
-    });
-});
+//builder.Services.AddDbContext<ProgrammersBlogContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration["ConnectionStrings:SqlServer"], sqlOptions =>
+//    {
+//        {
+//            sqlOptions.MigrationsAssembly("ProgrammersBlog.DataAccess");
+//        }
+//    });
+//});
+
+builder.Services.LoadMyService();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

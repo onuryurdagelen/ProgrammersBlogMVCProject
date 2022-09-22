@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersBlog.Shared", "ProgrammersBlog.Shared\ProgrammersBlog.Shared.csproj", "{5A94A53E-108F-4EB5-9B05-DAC0CF0263CE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersBlog.Entities", "ProgrammersBlog.Entities\ProgrammersBlog.Entities.csproj", "{20C208C4-BC25-40C5-B359-170C322AC972}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersBlog.DataAccess", "ProgrammersBlog.DataAccess\ProgrammersBlog.DataAccess.csproj", "{E644E651-04EA-4608-B98D-5CD12CD5E995}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorUI", "ProgrammersBlog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ProgrammersBlog.Presentations\ConsoleUI\ConsoleUI.csproj", "{2BD9B69C-88A8-4A46-A7B6-7C03F1068B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{F5117B52-9ED9-4EA9-9A04-097F634F746A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer", "Consumer\Consumer.csproj", "{F5117B52-9ED9-4EA9-9A04-097F634F746A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5A94A53E-108F-4EB5-9B05-DAC0CF0263CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A94A53E-108F-4EB5-9B05-DAC0CF0263CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A94A53E-108F-4EB5-9B05-DAC0CF0263CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A94A53E-108F-4EB5-9B05-DAC0CF0263CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20C208C4-BC25-40C5-B359-170C322AC972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20C208C4-BC25-40C5-B359-170C322AC972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C208C4-BC25-40C5-B359-170C322AC972}.Release|Any CPU.ActiveCfg = Release|Any CPU
